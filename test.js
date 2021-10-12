@@ -1,6 +1,6 @@
-import path from 'node:path';
-import test from 'ava';
-import callsites from './index.js';
+const path = require('node:path');
+const test = require('ava');
+const callsites = require('./index.js');
 
 test('main', t => {
 	t.is(path.basename(callsites()[0].getFileName()), 'test.js');
@@ -15,11 +15,9 @@ test('nested', t => {
 		functionName: site.getFunctionName(),
 	}));
 
-	const filename = import.meta.url.toString();
-
 	t.deepEqual(sites, [
-		{fileName: filename, functionName: 'g'},
-		{fileName: filename, functionName: 'f'},
-		{fileName: filename, functionName: null},
+		{fileName: __filename, functionName: 'g'},
+		{fileName: __filename, functionName: 'f'},
+		{fileName: __filename, functionName: null},
 	]);
 });
