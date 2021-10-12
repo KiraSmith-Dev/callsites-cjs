@@ -11,7 +11,7 @@ $ npm install callsites
 ## Usage
 
 ```js
-import callsites from 'callsites';
+const callsites = require('callsites');
 
 function unicorn() {
 	console.log(callsites()[0].getFileName());
